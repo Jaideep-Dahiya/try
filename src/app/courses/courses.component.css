@@ -1,0 +1,8 @@
+.cart {
+  height:485px;
+  overflow-y: scroll;
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}

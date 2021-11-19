@@ -1,0 +1,133 @@
+
+
+<form #userform="ngForm" novalidate>
+  <div class="row">
+      <div class="col-3">
+        <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="img-thumbnail rounded float-left" alt="Profile Picture">
+      </div>
+
+      <div class="col-9 ">
+        <div class="row">
+
+          <div class="col">
+            <label for="dn">Display Name</label>
+            <input type="text" #dname="ngModel" [class.is-invalid]="dname.invalid" required class="form-control" id="dn" placeholder="Display name" name="d_name" [(ngModel)]="model.d_name">
+            <small [class.d-none]="dname.valid || dname.untouched" >Field is required</small>
+          </div>
+          <div class="col">
+            <label for="dn">First name</label>
+            <input type="text" #fname="ngModel" [class.is-invalid]="fname.invalid" required class="form-control" id="fn" placeholder="First name" name="f_name" [(ngModel)]="model.f_name">
+            <small [class.d-none]="fname.valid || fname.untouched">Field is required</small>
+          </div>
+
+          <div class="col">
+            <label for="dn">Last Name</label>
+            <input type="text" #lname="ngModel" [class.is-invalid]="lname.invalid" required class="form-control" id="ln" placeholder="Last name" name="l_name" [(ngModel)]="model.l_name">
+            <small [class.d-none]="lname.valid || lname.untouched">Field is required</small>
+          </div>
+        </div>
+
+          <div class="form-group mt-3 mb-2">
+            <label for="aboutyourself">About Yourself</label>
+            <textarea class="form-control" id="aboutyourself" rows="3" name="about" [(ngModel)]="model.about"></textarea>
+          </div>
+          <h4 class="m">Your area of Interest</h4>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="designer" [(ngModel)]="model.designer">
+            <label class="form-check-label" for="flexCheckDefault">
+              Designer
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="developer" [(ngModel)]="model.developer">
+            <label class="form-check-label" for="flexCheckChecked">
+              Developer
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="projectmanager" [(ngModel)]="model.projectmanager">
+            <label class="form-check-label" for="flexCheckDefault">
+              Project Manager
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" name="sales" [(ngModel)]="model.sales">
+            <label class="form-check-label" for="flexCheckChecked">
+              Sales
+            </label>
+          </div>
+
+
+
+          <label for="sorp" class="mt-3">Are you a student or a professional</label>
+          <div id="sorp">
+            <div class="form-check mt-2">
+              <input class="form-check-input" #stud="ngModel" type="radio" name="employment" id="student" value="student" [(ngModel)]="model.employment">
+              <label class="form-check-label" for="student">Student</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" #prof="ngModel" type="radio" name="employment" id="professional" value="professional" [(ngModel)]="model.employment">
+              <label class="form-check-label" for="professional">Professional</label>
+            </div>
+          </div>
+
+          <!--here ng if will come for professional box for now just add-->
+            <div class="card" *ngIf="model.employment=='professional'">
+                <div class="row">
+                  <h4>How much of experience do you have? </h4>
+                  <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experience" id="f" value="0-5" [(ngModel)]="model.experience">
+                        <label class="form-check-label" for="f">0-5</label>
+                      </div>
+                  </div>
+
+                  <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experience" id="m" value="5-10" [(ngModel)]="model.experience">
+                        <label class="form-check-label" for="m">5-10</label>
+                      </div>
+                  </div>
+
+                  <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experience" id="l" value="10-" [(ngModel)]="model.experience">
+                        <label class="form-check-label" for="l">10 & above</label>
+                      </div>
+                  </div>
+
+                </div>
+              <hr/>
+                <div class="row">
+                    <h4>What is your expertise? </h4>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="expertise" id="java" value="java" [(ngModel)]="model.expertise">
+                        <label class="form-check-label" for="java">Java</label>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="expertise" id="react" value="react" [(ngModel)]="model.expertise">
+                        <label class="form-check-label" for="react">React</label>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="expertise" id="backend" value="backend" [(ngModel)]="model.expertise">
+                        <label class="form-check-label" for="backend">Backend</label>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+
+          <!---->
+          <button (click)="onSubmit()" [disabled]="userform.form.invalid" class="btn btn-primary mt-2">SAVE</button>
+      </div>
+
+  </div>
+</form>
+
